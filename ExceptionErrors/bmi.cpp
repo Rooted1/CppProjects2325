@@ -14,35 +14,40 @@ int main () {
 
     while (quitCmd != 'q') {
         
-        // Get user data
-        cout << "Enter weight (in pounds): ";
-        cin >> weightVal;
+        try {
 
-        // Error checking for non-negative weight
-        if (weightVal < 0) {
-            cout << "Invalid weight." << endl;
-        }
-        else {
-            cout << "Enter height (in inches): ";
-            cin >> heightVal;
+            
+            // Get user data
+            cout << "Enter weight (in pounds): ";
+            cin >> weightVal;
 
-            // Error checking for non-negative height
-            if (heightVal < 0){
-                cout <<  "Invalid height" << endl;
+            // Error checking for non-negative weight
+            if (weightVal < 0) {
+                throw runtime_error("Invalid weight.");
             }
-        }
+            else {
+                cout << "Enter height (in inches): ";
+                cin >> heightVal;
 
-        // calculate BMI value
-        if ((weightVal <= 0) || (heightVal <= 0)){
-            cout << "Cannot compute info." << endl;
-        }
-        else {
+                // Error checking for non-negative height
+                if (heightVal < 0){
+                    throw runtime_error("Invalid height.");
+                }
+            }
+
+            // calculate BMI value
             bmiCalc = (static_cast<float>(weightVal) / static_cast<float>(heightVal * heightVal)) * 703.0;
             // Print user health info
             cout << "BMI: " << bmiCalc << endl;
             cout << "(CDC: 18.6-24.9 normal)" << endl;
         }
 
+        catch (runtime_error& excpt){
+            // Prints the error message passed by throw statement
+            cout << excpt.what() << endl;
+            cout << "Cannot compute health info";
+        }
+        
         // Get user prompt to continue/quit
         cout << endl << "Enter any key ('q' to quit): ";
         cin >> quitCmd;
