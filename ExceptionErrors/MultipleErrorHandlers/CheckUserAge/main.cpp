@@ -21,7 +21,7 @@ int main() {
         try {
             cin >> age;
             if (cin.fail()) {
-                throw ios_base::failure("z");
+                throw runtime_error("z");
             }
 
             cout << inputName << " " << (age+1) << endl;
