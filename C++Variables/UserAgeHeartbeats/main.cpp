@@ -9,6 +9,8 @@ int main(){
     int userAgeYears;
     int userAgeDays;
     int userAgeMinutes;
+    int totalHeartbeats;
+    int avgBeatsPerMinute = 72;
 
     cout << "Enter your age in years: ";
     cin >> userAgeYears;
@@ -20,6 +22,9 @@ int main(){
 
     userAgeMinutes = userAgeDays * 24 * 60;
     cout << "You are " << userAgeMinutes << " minutes old." << endl;
+
+    totalHeartbeats = userAgeMinutes * avgBeatsPerMinute;
+    cout << "Your heart has  beat " << totalHeartbeats << " times." << endl;
 
     return 0;
 }
