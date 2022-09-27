@@ -5,20 +5,36 @@
 #include <iostream>
 using namespace std;
 
+int GetDownPayment(){
+    int downPayment;
+    cout << "Enter down payment: ",
+    cin >> downPayment;
+    return downPayment;
+}
+
+int GetPaymentPerMnth(){
+    int paymentPerMonth;
+    cout << "Enter monthly payment: ";
+    cin >> paymentPerMonth;
+    return paymentPerMonth;
+}
+
+int GetNumMnths(){
+    int numMonths;
+    cout << "Enter number of months: ";
+    cin >> numMonths;
+    return numMonths;
+}
+
 int main() {
     int downPayment;
     int paymentPerMonth;
     int numMonths;
     int totalCost;
 
-    cout << "Enter down payment: ",
-    cin >> downPayment;
-
-    cout << "Enter monthly payment: ";
-    cin >> paymentPerMonth;
-
-    cout << "Enter number of months: ";
-    cin >> numMonths;
+    downPayment = GetDownPayment();
+    paymentPerMonth = GetPaymentPerMnth();
+    numMonths = GetNumMnths();
 
     totalCost = downPayment + (paymentPerMonth * numMonths);
 
