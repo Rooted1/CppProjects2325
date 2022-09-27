@@ -12,19 +12,34 @@ int main(){
     int totalHeartbeats;
     int avgBeatsPerMinute = 72;
 
-    cout << "Enter your age in years: ";
-    cin >> userAgeYears;
+    cin.exceptions(ios_base::failbit);
 
-    userAgeDays = userAgeYears * 365;               // calculate days without leap years
-    userAgeDays = userAgeDays + (userAgeYears / 4); // Add days for leap years
+    try {
+        cout << "Enter your age in years: ";
+        cin >> userAgeYears;
 
-    cout << "You are " << userAgeDays << " days old." << endl;
+        if (userAgeYears < 0){
+            throw runtime_error("Error: Enter a number greater or equal to 0.");
+        }
 
-    userAgeMinutes = userAgeDays * 24 * 60;
-    cout << "You are " << userAgeMinutes << " minutes old." << endl;
+        userAgeDays = userAgeYears * 365;               // calculate days without leap years
+        userAgeDays = userAgeDays + (userAgeYears / 4); // Add days for leap years
 
-    totalHeartbeats = userAgeMinutes * avgBeatsPerMinute;
-    cout << "Your heart has  beat " << totalHeartbeats << " times." << endl;
+        cout << "You are " << userAgeDays << " days old." << endl;
+
+        userAgeMinutes = userAgeDays * 24 * 60;
+        cout << "You are " << userAgeMinutes << " minutes old." << endl;
+
+        totalHeartbeats = userAgeMinutes * avgBeatsPerMinute;
+        cout << "Your heart has  beat " << totalHeartbeats << " times." << endl;
+    }
+
+    catch(ios_base::failure& excpt){
+        cout << "Invalid input. Please enter numbers.";
+    }
+    catch(runtime_error& excpt){
+        cout << excpt.what() << endl;
+    }
 
     return 0;
 }
